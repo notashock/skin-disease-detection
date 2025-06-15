@@ -1,8 +1,4 @@
-Here's a professional, informative, and clean `README.md` for your GitHub repository based on the structure and contents you've described:
 
----
-
-```markdown
 # Skin Disease Classification Pipeline
 
 This repository contains a pipeline for testing and evaluating skin disease classification using a combination of pre-extracted image features and trained machine learning models.
@@ -120,14 +116,3 @@ Engineering Student | ML Enthusiast
 ## 📄 License
 
 This project is for academic and educational use. Feel free to fork and contribute, but please credit the original author.
-
-```
-
----
-
-Let me know if you’d like:
-- A `requirements.txt` template generated
-- A badge-rich version with shields.io
-- A lightweight CLI or script for inference  
-- Or a GitHub Actions workflow for automation!
-```
