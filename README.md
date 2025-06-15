@@ -1,118 +1,51 @@
-
 # Skin Disease Classification Pipeline
 
-This repository contains a pipeline for testing and evaluating skin disease classification using a combination of pre-extracted image features and trained machine learning models.
+This repository contains resources for performing skin disease classification using machine learning techniques. It includes a testing framework based on extracted image features and pretrained models.
 
-## 🧠 Project Overview
+## Project Structure
 
-The goal is to predict skin disease categories from test images using a hybrid feature-based approach. This project includes:
+* new\_images/
+  Contains a collection of test images used for evaluating the classification model.
 
-- A set of test images (`new_images/`)
-- Precomputed features (`extracted_features/`)
-- Trained models for dimensionality reduction and classification (`.pkl` files)
-- A Jupyter notebook (`combi_classif.ipynb`) to run inference on new data
+* extracted\_features/
+  Includes `.npy` files storing:
 
----
+  * Features extracted from the images in `new_images`
+  * Image names corresponding to the features
+  * Other intermediate or auxiliary feature arrays used for classification
 
-## 📁 Folder Structure
+* pca\_model.pkl
+  A saved PCA model used for dimensionality reduction on image features.
 
-```
+* xgboost\_skin\_disease\_model.pkl
+  A trained XGBoost classifier that predicts skin disease classes from the reduced features.
 
-.
-├── new\_images/                 # Folder containing test images
-│   ├── image1.jpg
-│   ├── image2.png
-│   └── ...
-├── extracted\_features/        # Folder containing extracted features and metadata
-│   ├── new\_image\_features.npy         # Features from images in new\_images
-│   ├── new\_image\_names.npy            # Corresponding filenames
-│   ├── other\_feature\_arrays.npy       # Additional relevant feature arrays
-├── pca\_model.pkl              # Trained PCA model for dimensionality reduction
-├── xgboost\_skin\_disease\_model.pkl     # Trained XGBoost classifier
-├── combi\_classif.ipynb        # Inference + classification notebook
-└── README.md
+* combi\_classif.ipynb
+  A Jupyter notebook that demonstrates the full pipeline: loading features, transforming them using PCA, and classifying them using the XGBoost model.
 
-````
+## How to Use
 
----
+1. Ensure that Python and all necessary libraries are installed. Required packages include:
 
-## 🚀 How to Run
+   * numpy
+   * pandas
+   * scikit-learn
+   * xgboost
+   * joblib
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/skin-disease-classification.git
-   cd skin-disease-classification
-````
+2. Open the `combi_classif.ipynb` notebook.
 
-2. Install required Python packages:
+3. Follow the steps in the notebook to:
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+   * Load and verify the test image features
+   * Apply PCA transformation
+   * Run predictions using the XGBoost model
+   * Display or store the classification results
 
-3. Open the notebook:
+## Purpose
 
-   ```bash
-   jupyter notebook combi_classif.ipynb
-   ```
+This project provides a simple and modular pipeline to evaluate skin disease classification models on new data without retraining. It is particularly useful for testing inference performance and validating model accuracy on unseen samples.
 
-4. Run the notebook cells to:
+## Note
 
-   * Load new image features
-   * Apply PCA
-   * Classify with the XGBoost model
-   * Output predictions for each test image
-
----
-
-## 🛠 Dependencies
-
-Make sure you have the following packages installed:
-
-* `numpy`
-* `pandas`
-* `matplotlib`
-* `scikit-learn`
-* `xgboost`
-* `joblib`
-* `opencv-python` *(if you plan to extract features again)*
-
-Add a `requirements.txt` file to track these dependencies (optional but recommended).
-
----
-
-## 📊 Models
-
-* **PCA Model:** Used for dimensionality reduction of extracted image features.
-* **XGBoost Classifier:** Predicts skin disease class from reduced feature vectors.
-
-Models are stored in `.pkl` format and loaded using `joblib`.
-
----
-
-## 📸 Notes on Image Data
-
-The `new_images/` folder contains test samples used for classification. Ensure the images match the expected preprocessing pipeline (e.g., resizing, normalization) that was applied during training.
-
----
-
-## 📈 Future Improvements
-
-* Add model evaluation metrics
-* Support more skin disease categories
-* Build a web-based prediction interface
-* Integrate deep learning models for end-to-end pipelines
-
----
-
-## 🧑‍🔬 Author
-
-**Your Name**
-Engineering Student | ML Enthusiast
-[LinkedIn](https://linkedin.com/in/your-profile) | [Portfolio](https://your-portfolio.com)
-
----
-
-## 📄 License
-
-This project is for academic and educational use. Feel free to fork and contribute, but please credit the original author.
+This project assumes that image features have already been extracted using a consistent method that matches the training pipeline used for the saved models.
